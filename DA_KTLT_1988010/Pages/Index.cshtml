@@ -1,0 +1,103 @@
+﻿@page
+@model IndexModel
+@using DA_KTLT_1988010.BLL.Entities
+@using DA_KTLT_1988010.BLL.Repositoties
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@{
+    string keyProduct = "";
+    var productRepo = new ProductRepo();
+    var products = productRepo.Read(keyProduct);
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/lib/vendors/bootstrap.min.css">
+
+    <script src="~/lib/vendors/jquery.min.js"></script>
+    <script src="~/lib/vendors/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <p>
+        <h2 style="text-align: center">Store Management</h2>
+    </p>
+
+
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#products">Products</a></li>
+            <li><a data-toggle="tab" href="#categories">Categories</a></li>
+            <li><a data-toggle="tab" href="#invoices">Invoices</a></li>
+            <li><a data-toggle="tab" href="#receipts">Receipts</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="products" class="tab-pane fade in active">
+                <p>
+                    <div class="row">
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary mb-2 mr-sm-2">New product</button>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="productName" placeholder="Enter product name to search...">
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" class="btn btn-primary mb-2">Search</button>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Exp</th>
+                                <th>Manufacturer</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Product product in products)
+                                {
+                                    <tr>
+                                        <td>@product.ID</td>
+                                        <td>@product.Name</td>
+                                        <td>@product.Exp</td>
+                                        <td>@product.Manufacturer</td>
+                                        <td>@product.Category.Name</td>
+                                        <td>Update - Delete</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+            <div id="categories" class="tab-pane fade">
+                <h3>CATEGORIES</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="invoices" class="tab-pane fade">
+                <h3>INVOICES</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+            <div id="receipts" class="tab-pane fade">
+                <h3>RECEIPTS</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
