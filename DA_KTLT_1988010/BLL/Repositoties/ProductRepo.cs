@@ -22,8 +22,9 @@ namespace DA_KTLT_1988010.BLL.Repositoties
         {
             List<Product> results = new List<Product>();
             var products = reader.Read<Product>();
+            if (key == null) key = "";
             foreach (Product product in products)
-                if (product.Name.Contains(key)) results.Add(product);
+                if (product.Name.ToUpper().Contains(key.ToUpper())) results.Add(product);
             return results;
         }
 

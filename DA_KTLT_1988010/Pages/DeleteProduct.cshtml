@@ -1,7 +1,7 @@
-﻿@page
-@model PrivacyModel
+﻿@page "{id:int?}"
+@model DeleteProductModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Delete Product";
 }
 
 <html>
@@ -15,16 +15,8 @@
 </head>
 
 <body>
-
-    <h1>@ViewData["Title"]</h1>
-
-    <p>Use this page to detail your site's privacy policy.</p>
-
-
+    <p><h4>@ViewData["DeleteProduct"]</h4></p>
+    <p><a asp-page="./Index">&larr; Go back to Store Management</a></p>
 </body>
-
-
 </html>
-
-
 

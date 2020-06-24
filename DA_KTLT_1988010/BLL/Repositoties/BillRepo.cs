@@ -22,8 +22,9 @@ namespace DA_KTLT_1988010.BLL.Repositoties
         {
             List<Bill> results = new List<Bill>();
             var bills = reader.Read<Bill>();
+            if (key == null) key = "";
             foreach (Bill bill in bills)
-                if (bill.Product.Name.Contains(key)) results.Add(bill);
+                if (bill.Product.Name.ToUpper().Contains(key.ToUpper())) results.Add(bill);
             return results;
         }
 

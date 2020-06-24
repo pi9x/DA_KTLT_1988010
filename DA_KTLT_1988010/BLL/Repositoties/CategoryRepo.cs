@@ -22,8 +22,9 @@ namespace DA_KTLT_1988010.BLL.Repositoties
         {
             List<Category> results = new List<Category>();
             var categories = reader.Read<Category>();
+            if (key == null) key = "";
             foreach (Category category in categories)
-                if (category.Name.Contains(key)) results.Add(category);
+                if (category.Name.ToUpper().Contains(key.ToUpper())) results.Add(category);
             return results;
         }
 
